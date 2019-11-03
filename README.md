@@ -1,6 +1,6 @@
-# nuxt-pwa
+# Transfarm temporary
 
-> My tiptop Nuxt.js project
+> Only for November 6 presentation
 
 ## Build Setup
 
