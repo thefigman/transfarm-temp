@@ -1,0 +1,12 @@
+@import 'variables';
+@import 'base';
+@import 'modules';
+@import 'mixins';
+
+.red {
+  color: $c-primary; 
+}
+
+h1 {
+  color: purple;
+}
