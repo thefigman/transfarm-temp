@@ -16,3 +16,8 @@ export default Vue.extend({
   
 })
 </script>
+<style lang="scss">
+.coop-tab {
+  padding-top: 1.5rem;
+}
+</style>

@@ -1,6 +1,6 @@
 <template lang="pug">
   .coops-list
-    .item-wrapper.q-shadow(v-for="item in items" :key="item.id"  @click="openContract(item)")
+    .item-wrapper.q-shadow(v-for="item in items" :key="item.id"  @click="openCoop(item)")
       .item
         .bg-img(v-bind:style="{backgroundImage:'url(' + item.imgUrl + ')'}")
         .info
@@ -20,22 +20,20 @@ export default Vue.extend({
     }
   },
   methods: {
-    openContract(item) {
-      // this.$router.push('/contract/' + item.id)
-    }
+    openCoop(item) {
+      this.$router.push('/cooperative/' + item.id)
+    },
   },
   mounted() {
     const _this = this
     Coops.listenToAll({
       added(doc) {
         const item = doc.data()
-        if (item.contractStatus == 0) {
-          item.id = doc.id
-          _this.items.unshift(item)
-          _this.items.sort((a, b) => {
-            return a.timestamp - b.timestamp
-          })
-        }
+        item.id = doc.id
+        _this.items.unshift(item)
+        _this.items.sort((a, b) => {
+          return a.timestamp - b.timestamp
+        })
       },
       removed() {},
       modified() {}
