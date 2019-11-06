@@ -1,5 +1,6 @@
 <template lang="pug">
   .user-profile 
+    .user-profile-bg
     .user-info
       img(:src="imgUrl")
       h1 {{title}}
@@ -15,13 +16,32 @@
         
 </template>
 <style lang="scss">
+@import '~scss/main';
 .user-profile {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+
+  &-bg {
+    display: block;
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translate(-50%, 0) scale(1.5);
+    height: 200px;
+    width: 100%;
+    background: $c-primary !important;
+    z-index: -1;
+  }
+
   .user-info {
     text-align: center;
     padding: 5rem 5rem 3rem 5rem;
+    z-index: 9999 !important;
     img {
       height: 10em;
       border-radius: 100%;
+      border: 10px solid white;
     }
   }
   .items-list {
