@@ -40,6 +40,15 @@ export default Vue.extend({
     // Users.test()
     // Init.init()
     console.log(firebase.auth().currentUser)
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.user = user
+        console.log(user.email)
+      } else {
+        this.$router.push('/login')
+      }
+    })
   }
 })
 </script>
