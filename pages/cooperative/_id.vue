@@ -3,13 +3,16 @@
     .img-container(v-bind:style="{backgroundImage:'url(' + coop.imgUrl + ')'}")
     .text-container
       .coop-title {{coop.title}}
-      .coop-details-heading 8 members
+      .coop-details-heading 6 members
 
       p.q-heading Crops sold
       crops-list
         
-    .join-coop-btn-container
-      v-btn.join-coop-btn(@click="join") Join Cooperative
+    .join-coop-btn-container(v-if="membership == false")
+      v-btn.join-coop-btn(@click="joinCoop") Join Cooperative
+
+    .view-members-btn-container(v-if="membership == true")
+      v-btn.view-members-btn(@click="viewMembers") View Members
 
 </template>
 
@@ -27,16 +30,22 @@ export default Vue.extend({
   async mounted() {
     this.coopId = this.$route.params.id
     this.coop = await Coops.getOne(this.coopId)
+    this.userId = await firebase.auth().currentUser.uid
+    this.membership = this.coop.farmers.includes(this.userId)
   },
   data() {
     return {
       coop: '',
       coopId: '',
+      userId: '',
+      membership: ''
     }
   },
   methods: {
-    join() {
-    }
+    joinCoop() {
+      this.coop.farmers.push(this.userId);
+      Coops.update('farmers',this.coop.farmers);
+    },
   }
 })
 </script>
@@ -87,7 +96,8 @@ export default Vue.extend({
     }
   }
 
-  .join-coop-btn {
+  .join-coop-btn,
+  .view-members-btn {
     display: block;
     width: 100%;
     background-color: transparent !important;
