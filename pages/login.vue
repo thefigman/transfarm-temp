@@ -26,7 +26,9 @@ export default Vue.extend({
         (users: firebase.firestore.QuerySnapshot) => {
           firestore()
             .collection('users')
-            .doc(googleUser.uid).set(user)
+            .doc(googleUser.uid).set(user).then(()=> {
+              this.$router.push('/')
+            })
         }
       )
     }
