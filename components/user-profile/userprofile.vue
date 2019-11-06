@@ -3,7 +3,8 @@
     .user-info
       img(:src="imgUrl")
       h1 {{title}}
-      p {{subtitle}}
+      p(v-for="coop in coops", @click="openCoop(coop)") {{coop.title}}
+      
     .products-list
       .item-wrapper.q-shadow(v-for="item in items" :key="item.id"  @click="openContract(item)")
         .item
@@ -51,7 +52,8 @@ export default Vue.extend({
       imgUrl: '',
       title: '',
       subtitle: '',
-      items: []
+      items: [],
+      coops: []
     }
   },
   async mounted() {
@@ -62,8 +64,6 @@ export default Vue.extend({
     this.imgUrl = firebaseUser.photoURL
     this.title = firebaseUser.displayName
 
-    const coops = []
-
     firebase
       .firestore()
       .collection('coops')
@@ -71,7 +71,9 @@ export default Vue.extend({
       .get()
       .then(coops => {
         coops.docs.forEach(coop => {
-          this.subtitle += coop.data().title + '\n'
+          const c = coop.data()
+          c.id = coop.id
+          this.coops.push(c)
         })
       })
 
@@ -91,6 +93,9 @@ export default Vue.extend({
   methods: {
     openContract(item) {
       this.$router.push('/contract/' + item.id)
+    },
+    openCoop(coop) {
+      this.$router.push('/cooperatives/' + coop.id)
     }
   }
 })
