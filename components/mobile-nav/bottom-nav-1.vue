@@ -5,8 +5,8 @@
       font-awesome-icon(:icon="['fas', 'home']")
       a Home
     li
-      font-awesome-icon(:icon="['fas', 'bell']")
-      a Notifications
+      font-awesome-icon(:icon="['fas', 'users']")
+      a Cooperatives
     li.center-btn.q-center-content
       a POST
     li
