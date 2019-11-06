@@ -12,7 +12,8 @@ export default {
         "ID OF FARMER1",
         "ID OF FARMER2"
       ],
-      creator: "ID OF CREATOR"
+      creator: "ID OF CREATOR",
+      imgUrl: ''
     }
 
     Coops.add(coop0)
