@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Items from '../../assets/scripts/firebends/ListingItems'
-import { ListingItem } from '../../assets/scripts/model/app/ListingItem'
+import Coops from '../../assets/scripts/firebends/Coops'
+import { Coop } from '../../assets/scripts/model/app/Coop'
 import { firestore } from 'firebase'
 
 export default Vue.extend({
@@ -26,7 +26,7 @@ export default Vue.extend({
   },
   mounted() {
     const _this = this
-    Items.listenToAll({
+    Coops.listenToAll({
       added(doc) {
         const item = doc.data()
         if (item.contractStatus == 0) {
@@ -40,12 +40,6 @@ export default Vue.extend({
       removed() {},
       modified() {}
     })
-
-    firestore()
-      .collection('wow')
-      .add({
-        hello: 'WORLDFFF'
-      })
   }
 })
 </script>
