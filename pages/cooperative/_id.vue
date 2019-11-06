@@ -58,7 +58,7 @@ export default Vue.extend({
   }
 
   .text-container {
-    background: white;
+    background: #f7f7f7;
     border-radius: 50px 50px 0 0;
     transform: translateY(-50px);
     padding: 4rem;
