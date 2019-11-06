@@ -1,12 +1,15 @@
 <template lang="pug">
-  h1 TAB4
+  UserProfile
 </template>
 <style lang="scss">
 
 </style>
 <script lang="ts">
 import Vue from 'vue'
+import UserProfile from '../user-profile/userprofile.vue'
 export default Vue.extend({
-  
+  components: {
+    UserProfile
+  }
 })
 </script>
