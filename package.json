@@ -39,7 +39,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "jest": "^24.1.0",
     "link-module-alias": "^1.2.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "prettier": "^1.16.4",
     "pug": "^2.0.3",
     "pug-plain-loader": "^1.0.0",
